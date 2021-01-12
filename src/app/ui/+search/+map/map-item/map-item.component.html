@@ -1,0 +1,10 @@
+<div class="map-main" [(leafletCenter)]="center" leaflet [leafletOptions]="options"
+    (leafletMapReady)="onMapReady($event)">
+    
+
+    <div [leafletLayer]="mapResults$ | async" *ngIf="mapResults$ | async">
+
+    </div>
+    <div *ngIf="userPin$ | async" [leafletLayer]="userPin$ | async">
+    </div>
+</div>

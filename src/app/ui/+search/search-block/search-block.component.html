@@ -1,0 +1,121 @@
+<div class="searchbar-block" [class.menu-visible]="menuVisibility">
+
+
+
+  <div class="searchbar">
+    <form class="searchbar-inputs" (ngSubmit)="onSearch()">
+      <div class="searchbar-inputs-inner">
+        <div class="input-wrapper">
+          <div class="input-title">Keyword:</div>
+          <input [formControl]="keywords" appInputClear placeholder="Keywords" />
+        </div>
+      </div>
+      <div class="searchbar-inputs-inner">
+        <div class="input-wrapper">
+          <div class="input-title">Location:</div>
+          <input list="locationItems" [formControl]="locationName" appInputClear placeholder="Location" >
+          <datalist id="locationItems">
+            <option *ngFor="let location of locationList$ | async" [value]="location.display_name">
+          </datalist>
+        </div>
+      </div>
+      <div class="searchbar-inputs-inner">
+        <div class="searchbar-inputs-inner--2">
+
+          <div class="input-wrapper">
+            <div class="input-title">Distance:</div>
+            <select [formControl]="radiusControl" appInputClear>
+              <option *ngFor="let rad of radiusLookup" [value]="rad.Key">{{rad.Value}}</option>
+            </select>
+            <span class="material-icons">
+              expand_more
+            </span>
+          </div>
+          <div class="input-wrapper mobile--only">
+            <div class="input-title">Sort by:&nbsp;</div>
+            <select [formControl]="sortControl">
+              <option>Distance</option>
+              <option>Date</option>
+              <option>Salary</option>
+            </select>
+            <span class="material-icons">
+              expand_more
+            </span>
+          </div>
+          <button class="btn-green" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="optionbar">
+    <div class="optionbar-options">
+      <div class="input-title input-title--simple">Sort by:&nbsp;</div>
+      <div class="input-wrapper">
+        <select [formControl]="sortControl">
+          <option>Distance</option>
+          <option>Date</option>
+          <option>Salary</option>
+        </select>
+        <span class="material-icons">
+          expand_more
+        </span>
+      </div>
+      <div class="pill m-l" [countUp]="resultCount$ | async" [options]="{startVal: AllJobCount$ | async}"></div>
+
+    </div>
+    <div class="optionbar-view">
+      <a class="btn-icon" [routerLink]="'/'" queryParamsHandling="merge" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+        <svg class="svg-icon">
+          <use xlink:href="#nx-list_icon" />
+        </svg>
+      </a>
+      <a class="btn-icon" [routerLink]="'/tile'" queryParamsHandling="merge" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+        <svg class="svg-icon">
+          <use xlink:href="#nx-tile_icon" />
+        </svg>
+      </a>
+
+      <a class="btn-icon " [routerLink]="'/map'" queryParamsHandling="merge" routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{exact: true}">
+        <svg class="svg-icon">
+          <use xlink:href="#nx-map_icon" />
+        </svg>
+      </a>
+      <a class="btn-icon" (click)="toggleFav()" [class.active-link]="isFavOpen">
+        <svg class="svg-icon">
+          <use xlink:href="#nx-heart_icon" />
+        </svg>
+      </a>
+    </div>
+    <button class="btn btn-icon btn-list" (click)="updateMenuVisibility()">
+      <span>
+        Filter
+      </span>
+      <span class="material-icons">
+        {{menuVisibility ? 'close': 'search'}}
+      </span>
+    </button>
+  </div>
+  <div *ngIf="hasRequests$ | async" class="spinner-container">
+    <div class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
+  </div>
+
+  <div *ngIf="((resultCount$ | async) === 0) && (favouritesFilter$ | async) === true" class="no-container">
+    <p>
+      You have no <i class="material-icons fav">favorite</i> vacancies.
+    </p>
+  </div>
+
+  <div
+    *ngIf="((resultCount$ | async) === 0) && ((favouritesFilter$ | async) === false) &&  ((hasRequests$ | async) === 0)"
+    class="no-container">
+    <p>
+      0 results try expanding your search
+    </p>
+  </div>
+</div>

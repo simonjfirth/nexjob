@@ -1,0 +1,322 @@
+app-search-block {
+    display: block;
+    position: sticky;
+    z-index: 400;
+    top: 82px;
+
+    @media only screen and (max-width: 1080px) {
+        top: 82px;
+    }
+
+    @media only screen and (max-width: 960px) {
+        top: 140px;
+    }
+}
+
+.searchbar-block {
+    margin: 0 auto;
+    box-sizing: content-box;
+    max-width: var(--max-width);
+    padding: 0 20px;
+}
+
+.searchbar {
+    width: 100%;
+    margin: 10px auto 0 auto;
+
+    select {
+        border: none;
+        font-family: CircularStd-Medium;
+        background: var(--color-white);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+}
+
+.searchbar-inputs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchbar-inputs-inner {
+    flex: 1;
+
+    &:nth-child(1) {
+        flex: 2;
+    }
+    &:nth-child(3) {
+        flex: 1;
+    }
+    &:nth-child(2) {
+        flex: 2;
+        padding: 0 8px;
+    }
+}
+
+.searchbar-inputs-inner--2 {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: 1fr 1fr;
+}
+.input-title {
+
+}
+
+.input-wrapper {
+    border: solid 1px var(--color-border);
+    border-radius: var(--border-radius);
+    display: grid;
+    background: var(--color-white);
+    grid-template-columns: auto 1fr;
+    padding: 0 10px;
+    position: relative;
+    select + span{
+        position: absolute;
+        right: 5px;
+        top: 10px;
+        pointer-events: none;
+    }
+
+    .input-title {
+        grid-column: 1;
+        vertical-align: middle;
+        line-height: 45px;
+        color: var(--color-text-blue);
+        font-family: CircularStd-Black;
+    }
+    input {
+        vertical-align: middle;
+        font-family: CircularStd-Medium;
+        border: none;
+        box-shadow: none;
+        grid-column: 2;
+        height: 45px;
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.optionbar {
+    background: var(--color-search-background);
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 10px auto 0 auto;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.optionbar-options {
+    display: flex;
+    flex-direction: row;
+
+    .pill {
+        line-height: 32px;
+        margin-right: 10px;
+        min-width: 45px;
+        text-align: center;
+    }
+
+    select {
+        min-width: 150px;
+        border: none;
+        background: var(--color-white);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+    .input-title {
+        margin-left: 10px;
+        background: var(--color-white);
+        div:first-child {
+            line-height: 35px;
+        }
+        &.input-title--simple{
+            background: none;
+            display: flex;
+            align-items: center;
+            margin-right: 5px;;
+        }
+    }
+}
+.btn-icon {
+    cursor: pointer;
+}
+
+.active-link {
+    svg {
+        fill: var(--color-text-blue) !important;
+        color: var(--color-text-blue) !important;
+    }
+}
+
+.optionbar-view {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    a {
+        position: relative;
+        &:nth-child(4),
+        &:nth-child(3) {
+            width: 30px;
+            height: 30px;
+        }
+    }
+    a .svg-icon {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.btn-icon.btn-list {
+    display: none;
+    background: var(--color-pill-background);
+    border-radius: var(--border-radius);
+    height: auto;
+    line-height: 40px;
+    width: 38px;
+    span {
+        color: var(--color-white);
+    }
+}
+
+@media only screen and (max-width: 960px) {
+    .btn-icon.btn-list {
+        display: block;
+    }
+
+    .searchbar {
+        transition: max-height 0.3s;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        top: 107px;
+        z-index: 6;
+    }
+
+    .searchbar-block.menu-visible .searchbar {
+        max-height: 300px;
+    }
+
+    .searchbar-block {
+        display: flex;
+        position: relative;
+        flex-direction: column-reverse;
+        padding: 0;
+        transition: max-height 0.3s;
+
+        .input-title--simple{
+            display: none !important;
+        }
+        .optionbar {
+            margin-top: 0;
+            .input-wrapper {
+                display: none;
+            }
+            .optionbar-options,
+            .optionbar-view,
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
+            .optionbar-options,
+            .btn {
+                max-width: 130px;
+            }
+
+            .btn-icon.btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: var(--font-m);
+                span:not(.material-icons) {
+                    font-size: 1.7rem;
+                    font-weight: 500;
+                    font-family: CircularStd-Black;
+                    padding-right: 5px;
+                }
+                .material-icons {
+                    font-size: 27px;
+                }
+            }
+
+            .pill {
+                width: 100%;
+                font-size: 1.7rem;
+                margin: 0;
+            }
+        }
+        .searchbar {
+            padding: 0 20px;
+        }
+    }
+    .searchbar-inputs {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    .searchbar .searchbar-inputs-inner {
+        padding: 0;
+        flex: 45% !important;
+        .input-wrapper {
+            display: grid;
+        }
+
+        &:nth-child(1) {
+            margin-right: 2px;
+        }
+        &:nth-child(2) {
+            margin-left: 2px;
+        }
+        &:nth-child(3) {
+            margin-top: 10px;
+            margin-left: 2px;
+
+            .searchbar-inputs-inner--2 {
+                flex: 1;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .searchbar .searchbar-inputs-inner {
+        padding: 0;
+        flex: 100% !important;
+        .input-wrapper {
+        }
+
+        &:nth-child(1) {
+            margin-right: 0;
+        }
+        &:nth-child(2) {
+            margin: 10px 0 0 0;
+        }
+        &:nth-child(3) {
+            margin-top: 10px;
+            margin-left: 2px;
+            flex: 100% !important;
+            .searchbar-inputs-inner--2 {
+                flex: 1;
+            }
+
+            .btn-green {
+                grid-column: 1 / 3;
+                padding: 11px;
+                margin-top: 5px;
+            }
+        }
+    }
+    .optionbar-options select {
+        min-width: initial;
+    }
+}
+
+.mobile--only {
+    display: block;
+    @media only screen and (min-width: 960px) {
+        display: none;
+    }
+}

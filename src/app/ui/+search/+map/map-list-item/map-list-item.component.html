@@ -1,0 +1,70 @@
+
+
+
+<a class="vacancy-result" [ngClass]="'vacancy_id_' +  model.id" (click)="onActiveChanged()">
+  <a class="vacancy-next" [routerLink]="['/', model.id]" (click)="canNav($event)">
+    <span class="vacancy-view">View</span>
+    <span class="material-icons">
+      chevron_right
+    </span>
+  </a>
+  <div class="vacancy-fav">
+    <i class="material-icons fav" (click)="toggleSaved()"
+      title="{{model.isSaved ? 'Remove from favourites' : 'Add to favourites'}}">
+      {{model.isSaved ? 'favorite' : 'favorite_border'}}
+    </i>
+  </div>
+  <h2>{{model.title}}</h2>
+
+  <div class="vacancy-row">
+    <span class="vacancy-icon">
+      <span class="material-icons">
+        location_on
+      </span>
+    </span>
+    <span class="vacancy-header t-o-h">{{model.locationName}}
+      <span *ngIf="!!model.distance">
+        {{model.distance }} miles
+      </span>
+    </span>
+  </div>
+
+  <div class="vacancy-row" *ngIf="!!closingSoon() && closingSoon() < 3">
+    <span class="vacancy-icon">
+      <span class="material-icons">
+        access_time
+      </span>
+    </span>
+    <span>
+      <span class="vacancy-expiring">
+        Expiring Soon
+      </span>
+
+      {{model?.closingDate | date: 'mediumDate'}}</span>
+  </div>
+
+  <div class="vacancy-row" *ngIf="(!!justadded() && (justadded() < 2))">
+    <span class="vacancy-icon">
+      <span class="material-icons">
+        access_time
+      </span>
+    </span>
+    <span>
+      <span class="vacancy-added">
+        Just Added
+      </span>
+    </span>
+  </div>
+
+  <span class="vacancy-rowblock">
+    <div class="vacancy-row">
+      <span class="vacancy-header">Company</span>
+      <span class="vacancy-heade-info t-o-h">{{model?.companyName}}</span>
+    </div>
+    <div class="vacancy-row" *ngIf="!!model.salary">
+      <span class="vacancy-header">Salary</span>
+      <span class="vacancy-heade-info t-o-h" [innerText]="model?.salary"></span>
+    </div>
+  </span>
+
+</a>

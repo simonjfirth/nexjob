@@ -1,0 +1,51 @@
+.btn-green {
+    font-family: CircularStd-Black;
+    color: var(--color-white);
+    background: var(--color-button);
+    border-radius: var(--border-radius);
+    padding: 0 20px;
+    border: none;
+    box-shadow: none;
+    font-size: var(--font-m);
+}
+
+.btn{
+    white-space: nowrap;
+}
+
+.pill {
+    @extend .btn-green;
+    font-size: 1.6rem;
+    background: var(--color-pill-background);
+    padding: 7px 10px;
+    &.m-l{
+        margin-left: 10px;;
+    }
+}
+
+
+
+.btn-icon {
+    border: none;
+    background: none;
+    width: 28px;
+    height: 28px;
+    padding: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    margin: 0 3px;
+    span {
+        font-size: 33px;
+        color: var(--color-text-black);
+    }
+
+    &.btn-icon--dark {
+        background: var(--color-text-black);
+        span {
+            color: var(--color-white);
+            font-size: 17px;
+        }
+    }
+}

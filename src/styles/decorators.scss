@@ -1,0 +1,83 @@
+.color-primary {
+  color: var(--color-primary);
+}
+
+.t-c {
+  text-align: center;
+}
+
+.t-l {
+  text-align: left;
+}
+
+.i-b {
+  display: inline-block;
+}
+
+.i-f {
+  display: inline-flex;
+}
+
+.c-p-n {
+  pointer-events: none;
+}
+.h3-thin {
+  font-weight: 300;
+  font-size: 2.4rem;
+}
+
+.f-c {
+  align-items: center;
+  justify-content: center;
+}
+
+.v-a-b {
+  vertical-align: bottom !important;
+}
+
+.v-a-m {
+  vertical-align: middle;
+}
+
+.t-r {
+  text-align: right;
+}
+
+.c-p {
+  cursor: pointer;
+}
+
+.m-t {
+  margin-top: 40px !important;
+}
+
+.m-t-s {
+  margin-top: 20px !important;
+}
+
+.p-r {
+  position: relative;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
+.color--blue {
+  color: var(--color-text-blue);
+  * {
+    color: inherit;
+  }
+}
+
+.o-x-v {
+  overflow-x: visible !important;
+}
+
+.color--amber {
+  color: var(--color-text-expire);
+}
+
+.color--green {
+  color: var(--color-button);
+}

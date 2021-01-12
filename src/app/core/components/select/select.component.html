@@ -1,0 +1,23 @@
+
+ <ng-select appendTo="body" #ngselect  [typeahead]="typeahead"  class="custom" [class.darkmode]="dark"
+ [clearable]="clearable" [bindLabel]="bindLabel" [bindValue]="bindValue" [searchable]="searchable" [multiple]="multiSelect"
+ [items]="options" [placeholder]="placeholder" (change)="selectChanged($event)" (search)="onSearch($event)"
+ [formControl]="formControlInput">
+</ng-select>
+
+<!-- <label for="contracttype" *ngIf="!!formControlInput" (click)="focus(ngselect)" [class.disabled]="disabled">
+  <div class="input-holder" [class.darkmode]="dark" [class.input--required]="isRequired">
+      <span>{{inputHolderTitle}}</span>
+     
+  </div>
+</label>
+
+<label for="contracttype" *ngIf="!formControlInput" (click)="focus(ngselect)" [class.disabled]="disabled">
+  <div class="input-holder" [class.darkmode]="dark" [class.input--required]="isRequired">
+      <span>{{inputHolderTitle}}</span>
+      <ng-select appendTo="body"  #ngselect [(ngModel)]="selected"  [typeahead]="typeahead" class="custom" [class.darkmode]="dark"
+          [clearable]="clearable" [bindLabel]="bindLabel" [bindValue]="bindValue" [searchable]="searchable" [multiple]="multiSelect"
+          [items]="options" [placeholder]="placeholder" (change)="selectChanged($event)" (search)="onSearch($event)">
+      </ng-select>
+  </div>
+</label> -->

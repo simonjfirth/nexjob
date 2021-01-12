@@ -1,0 +1,27 @@
+<div class="v-l-description-block v-l-description-block--qualities" *ngIf="qualities?.length > 0">
+  <div class="vl-icon">
+    <i class="material-icons">
+      add
+    </i>
+  </div>
+  <h3>
+    Qualities Needed
+  </h3>
+  <div *ngFor="let item of qualities" class="qualities__bar">
+    <div class="bar__icon">
+      <i class="material-icons">
+        {{item.icon}}
+      </i>
+    </div>
+    <div class="bar__title">
+      <span>
+        {{item.name}}
+      </span>
+    </div>
+    <div class="bar__gauge">
+      <div class="gauge__track">
+        <div class="gauge__bar" [style.width]="item.score + '%'"></div>
+      </div>
+    </div>
+  </div>
+</div>

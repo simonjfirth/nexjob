@@ -1,0 +1,296 @@
+.map-icon--custom {
+  background: var(--color-pill-background);
+  width: 30px;
+  height: 30px;
+  border: solid 2px var(--color-white);
+  border-radius: 50%;
+  font-size: 1.4rem;
+  text-align: center;
+  line-height: 27px;
+  color: var(--color-white);
+  box-shadow: 0 0 8px 2px #999;
+}
+
+.map-cansearch {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  z-index: 440;
+  pointer-events: all;
+  padding: 5px 20px;
+  border-radius: var(--border-radius);
+  background: var(--color-white);
+  cursor: pointer;
+}
+
+.map-icon--user {
+  width: 30px;
+  height: 30px;
+
+  margin: -20px 0 0 -20px;
+  position: relative;
+  z-index: 1000000 !important;
+  &:before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10px;
+    content: "You";
+    color: #fff;
+    font-size: 1.1rem;
+    z-index: 1000000;
+    text-align: center;
+  }
+  &:after {
+    content: "";
+    border: solid 1px var(--color-white);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    border-radius: 50% 50% 50% 0;
+    top: 0;
+    background: var(--color-text-blue);
+    transform: rotate(-45deg);
+    position: absolute;
+  }
+}
+
+.leaflet-div-icon {
+  border: none !important;
+  background: transparent !important;
+}
+
+.leaflet-marker {
+  @extend .map-icon--custom;
+}
+
+.map-container {
+  margin-top: -135px;
+  position: relative;
+  z-index: 1;
+  transition: height 0.3s linear;
+  height: calc((var(--vh, 1vh) * 100) - 130px);
+  overflow: hidden;
+
+  @media only screen and (max-width: 1080px) {
+    height: calc((var(--vh, 1vh) * 100) - 120px);
+
+  }
+  @media only screen and (max-width: 960px) {
+    height: calc((var(--vh, 1vh) * 100) - 55px);
+
+  }
+  .map-main {
+    width: calc(100% + 650px);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  @media only screen and (max-width: 740px) {
+    .map-main {
+      width: 100%;
+    }
+  }
+
+  .map-list-positioner {
+    top: 135px;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 440;
+  }
+
+  .map-search-list {
+    pointer-events: initial;
+    position: absolute;
+    top: -10px;
+    padding-top: 20px;
+    left: 0;
+    bottom: -10px;
+    padding-right: 30px;
+    width: 700px;
+    z-index: 440;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    // scroll-snap-type: y mandatory;
+    // scroll-behavior: smooth;
+
+    &::-webkit-scrollbar-track {
+      border-radius: 3px;
+      background-color: #f5f5f5;
+      opacity: 0;
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      background-color: #f5f5f5;
+      border-radius: 3px;
+      opacity: 0;
+      display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #ccc;
+      border-radius: 3px;
+      opacity: 0;
+    }
+
+    app-results-item-list {
+      background: var(--color-white);
+      border-radius: var(--border-radius-xl);
+      transition: transform 0.3s ease-in-out;
+      .vacancy-action .btn-green {
+        display: none;
+      }
+      .vacancy-heade-info {
+        max-width: 190px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .vacancy-info-2 .vacancy-heade-info {
+        max-width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .can-nav {
+        opacity: 0;
+        display: block;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      &.listing-block--active {
+        transform: translateX(20px);
+        cursor: pointer;
+        .can-nav {
+          display: block;
+          opacity: 1;
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      height: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .map-list-positioner .map-search-list app-results-item-list {
+      &.listing-block--active {
+        transform: translateY(-20px);
+      }
+    }
+    .map-cansearch {
+      position: fixed;
+      left: 20px;
+      right: initial;
+      top: 244px;
+    }
+    .map-main {
+      width: 100% !important;
+    }
+    .map-list-positioner {
+      bottom: 10px;
+      top: initial;
+      height: 180px;
+      max-width: initial;
+
+      .map-search-list {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+
+        app-results-item-list {
+          display: flex;
+          scroll-snap-align: center;
+          width: calc(100vw - 120px);
+          margin: 0 20px 20px 0;
+          flex-shrink: 0;
+          .vacancy-result-list {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 740px) {
+    .map-list-positioner {
+      bottom: 20px;
+      top: initial;
+      height: initial;
+    }
+    .map-list-positioner .map-search-list {
+      top: initial;
+      bottom: 0;
+    }
+
+    .map-list-positioner .map-search-list app-results-item-list {
+      &.listing-block--active {
+        transform: translateY(-20px);
+      }
+      margin: 0 20px;
+      padding: 20px;
+      box-shadow: 0px 3px 25px #00000029;
+      .vacancy-result-list {
+        height: 100%;
+        box-shadow: none;
+        margin-bottom: initial;
+        grid-template-columns: 0 1fr 0;
+        grid-template-rows: 60px 1fr;
+        position: relative;
+        .vacancy-action,
+        .vacancy-info {
+          grid-row: 2;
+        }
+        .vacancy-action {
+          position: absolute;
+          right: -25px;
+          top: -63px;
+        }
+      }
+      max-width: calc(100vw - 80px) !important;
+      .vacancy-info-1 {
+        flex-direction: column;
+        .vacancy-row {
+          justify-content: flex-start;
+        }
+      }
+      .vacancy-logo {
+        grid-column: 1 / 3;
+        padding: 10px 0;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .t-o-h {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0%);
+    }
+  }
+}

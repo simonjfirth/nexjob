@@ -1,0 +1,103 @@
+<div [innerHTML]="vacancy | JobListing"></div>
+<div class="v-l">
+    <div class="v-l animate animate--fade-in">
+        <!-- <div class="header-replicate"></div> -->
+        <div class="v-l-title-panel">
+            <div class="v-l-panel-left">
+                <img [src]="vacancy?.logoUrl" />
+                <h2>
+                    {{vacancy?.title}}
+                </h2>
+                <div class="panel-details">
+
+                    <div class="panel-details-primary">
+                        <h3>
+                            <div class="color--blue">
+                                <span class="material-icons">
+                                    location_on
+                                </span>
+                                &nbsp;
+                            </div>
+                            <div class="color--blue">
+                                {{vacancy?.locationName}}
+                            </div>
+                        </h3>
+                        <h4 *ngIf="!!closingSoon() && closingSoon() < 3" class="color--amber">
+                            <div>
+                                <span class="material-icons">
+                                    access_time
+                                </span>
+                            </div>
+                            &nbsp;
+                            <div>
+                                Expiring Soon
+                            </div>
+                        </h4>
+
+                        <h4 *ngIf="(!!justadded() && (justadded() < 2))" class="color--green">
+                            <div>
+                                <span class="material-icons">
+                                    access_time
+                                </span>
+                            </div>
+                            &nbsp;
+                            <div>
+                                Just Added
+                            </div>
+                        </h4>
+                    </div>
+
+
+                    <div class="panel-details-secondary">
+                        <h4>
+                            Company: {{!!vacancy?.companyName? vacancy?.companyName : 'N/A'}}
+                        </h4>
+                        <h4>
+                            Hours: {{!!vacancy?.workingPattern? vacancy?.workingPattern : 'N/A'}}
+                        </h4>
+                        <h4>
+                            Salary: {{!!vacancy?.salaryActual? vacancy?.salaryActual : 'N/A'}}
+                        </h4>
+                    </div>
+
+                </div>
+                <div class="panel-action">
+                    <a class="btn-primary btn-block btn btn-apply" target="_blank" [href]="vacancy?.url">Apply Now</a>
+                    <button class="btn-block btn-share btn-dark btn" (click)="toggleSave()">
+                        <i class="material-icons">
+                            {{vacancy?.isSaved ? 'favorite' : 'favorite_border'}}
+                        </i>
+                    </button>
+                    <button *ngIf="hasShare()" class="btn-block btn-dark btn-share btn" (click)="onShare(shareUrl)">
+                        <span class="material-icons">
+                            share
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="v-l-panel-right">
+                <div class="main-main" [(leafletCenter)]="center" leafletDraw leaflet [leafletOptions]="options"
+                    (leafletMapReady)="onMapReady($event)">
+                    <div *ngIf="jobPin" [leafletLayer]="jobPin">
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="v-l-body">
+            <app-vacancy-qualities [qualities]="qualities"></app-vacancy-qualities>
+            <app-vacancy-description *ngFor="let item of descriptions" [model]="item"></app-vacancy-description>
+
+            <div class="v-l-description-block" *ngFor="let video of videos">
+                <h3>
+                    {{video.Title}}
+                </h3>
+                <iframe [src]="video.Description | safe" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>

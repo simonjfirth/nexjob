@@ -1,0 +1,94 @@
+<div class="vacancy-result-list" [ngClass]="'vacancy_id_' +  model.id" (click)="onActiveChanged()">
+  <div class="vacancy-logo">
+    <img [src]="model.logoUrl" />
+  </div>
+  <div class="vacancy-info">
+    <h2 [innerHTML]="model.title"></h2>
+    <div class="vacancy-info-1">
+
+      <div class="vacancy-row  color--blue">
+        <span class="vacancy-icon">
+          <span class="material-icons">
+            location_on
+          </span>
+        </span>
+        <span class="vacancy-heade-info" [innerHTML]="model.locationName">
+          <span *ngIf="!!model.distance">
+            {{model.distance }} miles
+          </span>
+        </span>
+      </div>
+
+      <div class="vacancy-row color--amber" *ngIf="!!closingSoon() && closingSoon() < 7 ">
+        <span class="vacancy-icon">
+          <span class="material-icons">
+            access_time
+          </span>
+        </span>
+        <span>
+          <span class="vacancy-expiring">
+            Expiring Soon
+          </span>
+
+          <span class="apply-by">Apply by {{model?.expiryDate | date: 'mediumDate'}}</span>
+        </span>
+      </div>
+
+      <div class="vacancy-row color--green" *ngIf="!!justadded() && justadded() < 3">
+        <span class="vacancy-icon">
+          <span class="material-icons">
+            access_time
+          </span>
+        </span>
+        <span>
+          <span class="vacancy-added">
+            Just Added
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="vacancy-info-1">
+      <div class="vacancy-row">
+        <span class="vacancy-header">Company</span>
+        <span class="vacancy-heade-info">{{model?.companyName}}</span>
+      </div>
+      <div class="vacancy-row" *ngIf="!!model.salary">
+        <span class="vacancy-header">Salary</span>
+        <span class="vacancy-heade-info" [innerText]="model?.salary"></span>
+      </div>
+    </div>
+  </div>
+  <div class="vacancy-action">
+    <i class="material-icons fav" (click)="toggleSaved($event)"
+      title="{{model.isSaved ? 'Remove from favourites' : 'Add to favourites'}}">
+      {{model.isSaved ? 'favorite' : 'favorite_border'}}
+    </i>
+    <a class="btn-green" [routerLink]="'/' + model.id">View</a>
+
+    <span class="material-icons can-nav">
+      chevron_right
+    </span>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

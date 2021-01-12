@@ -1,0 +1,192 @@
+html {
+  font-size: 62.5%;
+
+  --color-search-background: #bddff0;
+  --color-pill-background: #0187c7;
+  --color-button: #0187c7;
+  --color-button-text: #fff;
+  --color-white: #fff;
+
+  --color-text-dark: #002d4b;
+  --color-btn-dark: #255673;
+  --color-btn-light: #DEE8F1;
+  --color-text-blue: #0187c7;
+  --color--text-grey: #8b8b8b;
+  --color-text-expire: #cb5b15;
+  --color-text-black: #000;
+  --color-border: #b9b9b9;
+
+  --font-xxl: 3rem;
+  --font-xl: 2.4rem;
+  --font-ll: 2.2rem;
+  --font-l: 2rem;
+  --font-m: 1.5rem;
+
+  --border-radius: 5px;
+
+  --radius-panels: 9px;
+
+  --border-radius-xl: 10px;
+
+  --max-width: 1366px;
+
+  --header-background: linear-gradient(to right, #06213a, #2b6181 100%);
+  --header-sub-background: transparent linear-gradient(90deg, #003a88 0%, #04edd4 100%) 0% 0% no-repeat padding-box;
+
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: "circularStd-Medium", sans-serif;
+    font-size: 62.5%;
+    * {
+      box-sizing: border-box;
+      font-size: 1.6rem;
+      font-weight: normal;
+    }
+  }
+}
+.spinner-container {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 5;
+  top: 220px;
+  left: 0;
+  right: 0;
+}
+
+option{
+  font-family: "circularStd-Medium", sans-serif;
+}
+
+.no-container {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 5;
+  top: 300px;
+  left: 0;
+  right: 0;
+  padding: 0 20px;
+  font-family: CircularStd-Black;
+  p {
+    font-size: 2rem;
+  }
+  .fav {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  span {
+    color: var(--color-text-blue);
+    font-size: 2.2rem;
+  }
+}
+select,
+input {
+  font-family: CircularStd-Medium;
+}
+.spinner {
+  margin: 100px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+
+  animation: sk-rotate 2s infinite linear;
+}
+
+.spinner-block {
+  text-align: center;
+}
+
+body {
+  .ng-select.ng-select-single .ng-select-container {
+    height: 45px;
+    border: none;
+    min-width: 150px;
+  }
+
+  .optionbar-options .ng-select.ng-select-single .ng-select-container {
+    height: initial !important;
+  }
+  .ng-value-container {
+    overflow: visible !important;
+  }
+  .ng-value {
+    overflow: visible !important;
+    height: 20px !important;
+  }
+
+
+  .ng-value-container {
+    line-height: 15px;
+    height: 20px;
+  }
+}
+.dot1,
+.dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: var(--color-pill-background);
+  border-radius: 100%;
+  animation: sk-bounce 2s infinite ease-in-out;
+}
+
+.dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+.leaflet-control-attribution {
+  display: none;
+}

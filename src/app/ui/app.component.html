@@ -1,0 +1,104 @@
+<div class="page__loader" [class.overlay]="hasRequests">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div class="page-container" [class.list-view]="listView">
+    <header class="page-container-company webflow-main-wrapper">
+        <div data-collapse="medium" data-animation="default" data-duration="400" data-doc-height="1" role="banner"
+            class="navbar-4 w-nav">
+            <div class="div-block-42">
+                <a href="index.html" aria-current="page" class="brand-2 w-nav-brand w--current"></a>
+                <div class="menu-button w-nav-button" #navButton></div>
+                <nav role="navigation" class="nav-menu-2 w-nav-menu" #navMenu>
+                    <div class="div-block-8">
+                        <div class="container-5 w-container">
+                            <a href="https://www.nexjob.com/index.html" aria-current="page"
+                                class="nav-link-5 w-nav-link ">Home</a>
+                            <a href="https://www.nexjob.com/using-the-app.html" class="nav-link-5 w-nav-link">Using the
+                                app</a>
+                            <a href="https://www.nexjob.com/advertising-jobs.html"
+                                data-w-id="c6ab3249-02bb-0219-0814-c86dd764f56c"
+                                class="nav-link-5dd w-nav-link">Advertising jobs FREE</a>
+                            <a href="https://www.nexjob.com/quick-apply.html" class="nav-link-5 w-nav-link">Quick
+                                apply</a>
+                            <a href="https://search.nexjob.com" class="nav-link-5search w-nav-link w--current">Search
+                                Jobs</a>
+                            <a href="#" class="nav-link-5login nav-link-6 w-nav-link">Login</a></div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="page-container-subheader">
+        <app-header></app-header>
+    </div>
+    <main class="page-container-body">
+        <router-outlet></router-outlet>
+    </main>
+
+    <footer class="webflow-main-wrapper">
+
+        <div class="footer-upper">
+            <div class="div-block-39">
+                <div class="div-block-40">
+                    <h1 class="heading-8 lower">WE LOVE</h1>
+                    <h1 class="heading-8 footertoo">FEEDBACK</h1>
+                </div>
+                <div class="div-block-41">
+                    <div class="text-block-6">We love the app and the way it helps people discover new jobs and apply
+                        with ease. We’re constantly refining it - making it better for a new generation of NexJobbers.
+                        Let us know if we’re missing anything - or more features you’d like to see. Send us a message.
+                    </div>
+                    <a href="mailto:clientsupport@genius.online?subject=Hiya!%20Some%20feedback%20about%20NexJob"
+                        class="hi-button w-button">Say Hi</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-topper">
+            <div class="div-block-33">
+                <div class="div-block-47 medium">
+                    <h1 class="heading-7">Download the App NOW</h1>
+                    <div class="applegoogle">
+                        <a href="https://play.google.com/store/apps/details?id=com.geniusgroup.NexJob"
+                            class="link-block-google w-inline-block"></a>
+                        <a href="https://apps.apple.com/gb/app/nexjob/id1502409365"
+                            class="link-block-apple w-inline-block"></a>
+                    </div>
+                </div>
+                <div class="div-block-46">
+                    <div class="div-block-34">
+                        <a href="https://apps.apple.com/gb/app/nexjob/id1502409365"
+                            class="link-block-apple foot w-inline-block"></a>
+                        <a href="https://play.google.com/store/apps/details?id=com.geniusgroup.NexJob"
+                            class="link-block-google foot w-inline-block"></a>
+                    </div>
+                </div>
+                <div class="div-block-36">
+                    <a href="#" class="facebook w-inline-block"></a>
+                    <a href="#" class="linkedin w-inline-block"></a>
+                    <a href="#" class="twitter w-inline-block"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="div-block-30">
+                <div class="div-block-31">
+                    <p class="paragraph">Designed &amp; Built in Yorkshire<br>‍<br>Genius Group Limited<br>The
+                        Watermill<br>Broughton Hall Estate<br>Skipton<br>BD23 3AG<br><br>Call: 01756 701 222</p>
+                </div>
+                <div class="div-block-7">
+                    <a href="#" class="link">Copyright © 2020 Genius Group</a>
+                    <a href="terms.html" class="link term">Terms &amp; Privacy</a>
+                </div>
+            </div>
+            <div class="socialfooter">
+                <a href="#" class="facebook w-inline-block"></a>
+                <a href="#" class="linkedin w-inline-block"></a>
+                <a href="#" class="twitter w-inline-block"></a>
+            </div>
+        </div>
+
+
+        <script src="/assets/javascript/webflow.js"></script>
+    </footer>
+</div>

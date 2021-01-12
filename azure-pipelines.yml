@@ -1,0 +1,35 @@
+
+pool: 
+    vmImage: 'windows-latest'
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+    customCommand: dir
+    workingDir: ''
+
+- task: Npm@1
+  displayName: 'Build Angular'
+  inputs:
+    command: custom
+    customCommand: run build -- --prod
+    workingDir: ''
+
+- task: PublishPipelineArtifact@0
+  inputs:
+      artifactName: 'angular'
+      targetPath: 'dist/Storefront'
+      
+- task: AzureFileCopy@3
+  inputs:
+    SourcePath: '$(Build.sourcesDirectory)/dist/Storefront'
+    azureSubscription: 'BasisNexGenAts(482bd98d-702d-45cd-bdf4-c2a177f23c2c)'
+    Destination: 'AzureBlob'
+    storage: 'nexjobweb'
+    ContainerName: '$web'
+

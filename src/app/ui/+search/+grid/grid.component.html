@@ -1,0 +1,7 @@
+<div class="list-body animate animate-pop">
+  <div class="vacancy-results">
+    <app-results-item class="" *ngFor="let item of searchResults$ | async; trackBy: trackByFn; let i = index"
+      [model]="item">
+    </app-results-item>
+  </div>
+</div>

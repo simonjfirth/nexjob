@@ -1,0 +1,20 @@
+<div class="map-container animate animate--fade-in">
+  <app-map-item [scrollToVacancyByModel]="currentActiveVacancyModel" (onScrollToVacancy)="scrollToVacancy($event)">
+  </app-map-item>
+  <div class="map-list-positioner">
+    <div class="map-search-list">
+      <app-results-item-list *ngFor="let item of searchResults$ | async" [model]="item"
+        [class.listing-block--active]="item.id === currentActiveVacancy"
+        (onVacancySelected)="updateSelectedActiveVacancy($event)">
+      </app-results-item-list>
+    </div>
+    <div *ngIf="(searchArea$ |async).canSearch === false" class="map-cansearch color--blue" (click)="searchArea()">
+      <span class="material-icons v-a-m">
+        search
+      </span>
+      <span class="v-a-m">
+        Search this area
+      </span>
+    </div>
+  </div>
+</div>

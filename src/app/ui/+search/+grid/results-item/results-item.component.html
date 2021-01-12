@@ -1,0 +1,110 @@
+<a class="vacancy-result" [ngClass]="'vacancy_id_' +  model.id"  [routerLink]="'/' + model.id">
+  <div class="vacancy-next">
+    <span class="material-icons">
+      chevron_right
+    </span>
+  </div>
+  <div class="vacancy-fav">
+    <i class="material-icons fav" (click)="toggleSaved($event)"
+      title="{{model.isSaved ? 'Remove from favourites' : 'Add to favourites'}}">
+      {{model.isSaved ? 'favorite' : 'favorite_border'}}
+    </i>
+  </div>
+  <img [src]="model.logoUrl"/>
+  <h2 [innerHTML]="model.title"></h2>
+  <div class="vacancy-row color--blue">
+    <span class="vacancy-icon">
+      <span class="material-icons">
+        location_on
+      </span>
+    </span>
+    <span class="vacancy-heade-info" [innerHTML]="model.locationName">
+      <span *ngIf="!!model.distance">
+        {{model.distance }} miles
+      </span>
+    </span>
+  </div>
+  <div class="vacancy-row" *ngIf="!!closingSoon() && closingSoon() < 3">
+    <span class="vacancy-icon">
+      <span class="material-icons">
+        access_time
+      </span>
+    </span>
+    <span>
+      <span class="vacancy-expiring">
+        Expiring Soon
+      </span>
+
+      {{model?.closingDate | date: 'mediumDate'}}</span>
+  </div>
+
+
+  <div class="vacancy-row" *ngIf="!!justadded() && justadded() < 3 && closingSoon() >= 3">
+    <span class="vacancy-icon">
+      <span class="material-icons">
+        access_time
+      </span>
+    </span>
+    <span>
+      <span class="vacancy-added">
+        Just Added
+      </span>
+    </span>
+  </div>
+
+  <span class="vacancy-rowblock">
+    <div class="vacancy-row">
+      <span class="vacancy-header">Company</span>
+      <span class="vacancy-heade-info">{{model?.companyName}}</span>
+    </div>
+    <div class="vacancy-row" *ngIf="!!model.salary">
+      <span class="vacancy-header">Salary</span>
+      <span class="vacancy-heade-info" [innerText]="model?.salary"></span>
+    </div>
+  </span>
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="listing-block list-page" >
+  <a class="listing-info" [routerLink]="['/search', model.id]">
+    <div class="title">{{model.title}}</div>
+    <div class="location">{{model.locationName}}</div>
+  </a>
+  <div class="listing-actions">
+    <i class="material-icons fav" (click)="toggleSaved($event)">
+      {{model.isSaved ? 'favorite' : 'favorite_border'}}
+    </i>
+    <button class="btn btn-primary-outline btn-distance" *ngIf="!!model.distance">
+      <div >
+        <div>{{model.distance}}</div>
+        <div>miles</div>
+        <div>away</div>
+      </div>
+    </button>
+  
+  <a class="btn btn-dark btn-view" [routerLink]="['/search', model.id]">
+      <span>View</span>
+      <i class="material-icons">
+        find_in_page
+      </i>
+    </a> 
+  </div>
+</div> -->
