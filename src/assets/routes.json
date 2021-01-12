@@ -1,0 +1,24 @@
+{
+    "routes": [
+      {
+        "route": "/tile"
+      },
+      {
+        "route": "/map/"
+      },
+      {
+        "route": "/*",
+        "serve": "/index.html",
+        "statusCode": 200
+      }
+    ],
+    "platformErrorOverrides": [
+      {
+        "errorType": "NotFound",
+        "serve": "/custom-404.html"
+      }
+    ],
+    "mimeTypes": {
+        "custom": "text/html"
+    }
+  }
