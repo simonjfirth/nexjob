@@ -46,10 +46,20 @@ export class JWTInterceptor implements HttpInterceptor {
             });
         }
 
+
+
         // Caching Response
         reqType = req.method;
         if (reqType === 'GET') {
             let reqBody = this._storageService.getFromTimeoutStorage(req.urlWithParams);
+            if (!!reqBody) {
+                return of(reqBody);
+            }
+        }
+
+        if (reqType === 'POST') {
+            const body = !!req.body ? JSON.stringify(req.body) : '';
+            let reqBody = this._storageService.getFromTimeoutStorage(req.url + body);
             if (!!reqBody) {
                 return of(reqBody);
             }
@@ -66,6 +76,11 @@ export class JWTInterceptor implements HttpInterceptor {
                     if (reqType === 'GET') {
                         this._storageService.setWithTimeout(req.urlWithParams, event);
                     }
+                    if (reqType === 'POST') {
+                        const body = !!req.body ? JSON.stringify(req.body) : '';
+                        this._storageService.setWithTimeout(req.url + body, event);
+                    }
+
                 }
             }),
             catchError(response => {
