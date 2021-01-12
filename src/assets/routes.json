@@ -1,12 +1,6 @@
 {
     "routes": [
       {
-        "route": "/tile"
-      },
-      {
-        "route": "/map/"
-      },
-      {
         "route": "/*",
         "serve": "/index.html",
         "statusCode": 200
